@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+    {#    {% if error %} #}
+    {#        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div> #}
+    {#    {% endif %} #}
+    <body class="text-center">
+    <main class="form-signin">
+        <form action="{{ path('login') }}" method="post">
+{#                    <img class="mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="50" height="57">#}
+            <h1 class="h3 mb-3 fw-normal">Please Login</h1>
+
+            <div class="form-floating">
+
+                <input type="text" id="username" name="_username" placeholder="name@example.com"
+                       value="{{ last_username }}"/>
+
+            </div>
+            <div class="form-floating">
+                <input type="password" id="password" placeholder="Password" name="_password"/>
+                <input type="hidden" name="_target_path" value="/shop/list/">
+
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            {% if error %}
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <button class="w-50 btn btn-lg btn-primary" type="submit">Login</button>
+            <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
+        </form>
+    </main>
+    </body>
+    {#    </form> #}
+    {#    <form action="{{ path('login') }}" method="post"> #}
+    {#        <label for="username">Email:</label> #}
+    {#        <input type="text" id="username" name="_username" value="{{ last_username }}"/> #}
+
+    {#        <label for="password">Password:</label> #}
+    {#        <input type="password" id="password" name="_password"/> #}
+    {#        <input type="hidden" name="_target_path" value="/shop/list/"> #}
+
+    {# Если вы хотите контролировать URL, по которому перенаправляется пользователь при успешном входе
+        <input type="hidden" name="_target_path" value="/account"/> #}
+
+    {#        <button type="submit">login</button> #}
+    {#    </form> #}
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+        {% block body %}
+
+<body>
+
+
+<div class="row">
+{% for item in item %}
+
+{#    <p>Id:{{item.id |trans|nl2br }}</p>#}
+
+{#    <p>{{item.name |trans|nl2br }}</p>#}
+
+{#    <p>Price:{{item.price |trans|nl2br}}</p>#}
+
+{#    <p> {{item.discription |trans|nl2br }}</p>#}
+
+{# <p> <a href="{{ path('itemShowListAddCart',{'id':item.id}) }}">add cart</a></p>#}
+
+       <div class="col-md-4">
+           <div class="card mb-4 product-wap rounded-0">
+               <div class="card rounded-0">
+                   <img class="card-img rounded-0 img-fluid" src="assets/img/shop_01.jpg">
+                   <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                       <ul class="list-unstyled">
+                           <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
+                           <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
+                           <li><a class="btn btn-success text-white mt-2" href="{{ path('itemAddCart',{'id':item.id}) }}"><i class="bi bi-basket2"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket2" viewBox="0 0 16 16">
+                                       <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z"/>
+                                       <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-.623l-1.844 6.456a.75.75 0 0 1-.722.544H3.69a.75.75 0 0 1-.722-.544L1.123 8H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM2.163 8l1.714 6h8.246l1.714-6H2.163z"/>
+                                   </svg></a></li>
+                       </ul>
+                   </div>
+               </div>
+               <div class="card-body">
+                   <a href="{{path( 'itemShow',{'id':item.id}) }}" class="h3 text-decoration-none">{{item.name |trans|nl2br }}</a>
+                   <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                       <li>{{ item.discription |trans|nl2br }}</li>
+                           <li>{{ item.category.name|trans|nl2br }}</li>
+                       <li class="pt-2">
+                           <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
+                           <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
+                           <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
+                           <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
+                           <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
+                       </li>
+                   </ul>
+                   <ul class="list-unstyled d-flex justify-content-center mb-1">
+                       <li>
+                           <i class="text-warning fa fa-star"></i>
+                           <i class="text-warning fa fa-star"></i>
+                           <i class="text-warning fa fa-star"></i>
+                           <i class="text-muted fa fa-star"></i>
+                           <i class="text-muted fa fa-star"></i>
+                       </li>
+                   </ul>
+                   <p class="text-center mb-0">${{item.price |trans|nl2br}}</p>
+               </div>
+           </div>
+       </div>
+
+{% endfor %}
+</div>
+</body>
+            </html>
+  {% endblock %}
+
+

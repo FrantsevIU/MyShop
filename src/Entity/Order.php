@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use PhpParser\Node\Name\FullyQualified;
 
 /**
  * Orders
@@ -15,148 +16,110 @@ use PhpParser\Node\Name\FullyQualified;
 class Order
 {
     /**
-     * @var int
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(name="name", type="string")
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(name="email", type="string")
      */
-    private $email;
+    private string $email;
 
     /**
      * @ORM\Column(name="number_phone", type="string")
      */
-    private $numberPhone;
+    private string $numberPhone;
 
     /**
      * @ORM\Column(name="address", type="string")
      */
-    private $address;
+    private string $address;
 
     /**
-     * @var ArrayCollection
      * @ORM\ManyToMany(targetEntity="App\Entity\Product")
      * @ORM\JoinTable(name="orders_products",
      *     joinColumns={@ORM\JoinColumn(name="order_id",referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="product_id",referencedColumnName="id")}
      *     )
      */
-    private $products;
+    private ArrayCollection $products;
 
     public function __construct()
     {
         $this->pruducts = new ArrayCollection();
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param mixed $name
-     */
-    public function setName($name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email): void
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getNumberPhone()
+    public function getNumberPhone(): string
     {
         return $this->numberPhone;
     }
 
-    /**
-     * @param mixed $numberPhone
-     */
-    public function setNumberPhone($numberPhone): void
+    public function setNumberPhone(string $numberPhone): void
     {
         $this->numberPhone = $numberPhone;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAddress()
+    public function getAddress(): string
     {
         return $this->address;
     }
 
-    /**
-     * @param mixed $address
-     */
-    public function setAddress($address): void
+    public function setAddress(string $address): void
     {
         $this->address = $address;
     }
 
-    /**
-     * @return ArrayCollection
-     */
     public function getProducts(): ArrayCollection
     {
         return $this->products;
     }
 
-    /**
-     * @param Product $product
-     * @return void
-     */
-    public function addProduct(Product $product): void
+    public function addProduct(Product $product): self
     {
         if (!$this->products->contains($product)) {
             $this->products->add($product);
         }
+        return $this;
     }
 
-    /**
-     * @param Product $product
-     * @return void
-     */
-    public function removeProduct(Product $product)
+    public function removeProduct(Product $product): self
     {
         if ($this->products->contains($product)) {
             $this->products->remove($product);
         }
+        return $this;
     }
 
 }

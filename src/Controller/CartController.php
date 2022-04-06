@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Cart;
-use App\Entity\ItemProduct;
 use App\Entity\Product;
 use App\Repository\CartRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,20 +18,16 @@ class CartController extends AbstractController
 {
     private SessionInterface $session;
 
-    /**
-     * @param SessionInterface $session
-     */
     public function __construct(SessionInterface $session)
     {
         $this->session = $session;
         $this->session->start();
-//        $this->session->set("flag",1);
     }
 
     /**
      * @Route("shop/cart", name="cart")
      */
-    public function cart(CartRepository $repository,Request $request): Response
+    public function cart(CartRepository $repository, Request $request): Response
     {
         $cartItem = $repository->findBy(["sessionId" => $request->getSession()->getId()]);
 
@@ -44,7 +40,7 @@ class CartController extends AbstractController
     /**
      * @Route("shop/cart/dellItem/{id}", name="dellItem")
      */
-    public function dellProduct(int $id, EntityManagerInterface $em)
+    public function dellProduct(int $id, EntityManagerInterface $em): Response
     {
         $Item = $em->getRepository(Cart::class)->find($id);
 
@@ -57,7 +53,7 @@ class CartController extends AbstractController
     /**
      * @Route("shop/cart/clear", name="clear")
      */
-    public function clearCart(EntityManagerInterface $em,Request $request)
+    public function clearCart(EntityManagerInterface $em, Request $request): Response
     {
         $item = $em->getRepository(Cart::class)
             ->findBy(["sessionId" => $request->getSession()->getId()]);
@@ -73,9 +69,6 @@ class CartController extends AbstractController
 
     /**
      * @Route("shop/cart/update/add/{id}", name="addUpdateCart")
-     * @param EntityManagerInterface $em
-     * @param int $id
-     * @return Response
      */
     public function plusCount(EntityManagerInterface $em, int $id): Response
     {
@@ -90,9 +83,6 @@ class CartController extends AbstractController
 
     /**
      * @Route("shop/cart/update/dell/{id}", name="dellUpdateCart")
-     * @param int $id
-     * @param EntityManagerInterface $em
-     * @return Response
      */
     public function minusCount(int $id, EntityManagerInterface $em): Response
     {
@@ -109,10 +99,6 @@ class CartController extends AbstractController
 
     /**
      * @Route("/shop/cart/add/{id}", name="itemAddCart")
-     * @param Request $request
-     * @param int $id
-     * @param EntityManagerInterface $em
-     * @return Response
      */
     public function addProduct(Request $request, int $id, EntityManagerInterface $em): Response
     {
@@ -120,13 +106,11 @@ class CartController extends AbstractController
             'sessionId' => $request->getSession()->getId(),
             'product' => $id
         ]);
-//        dump($request->getSession());
-//        die(1);
 
         if ($cart) {
             $cart->setCount($cart->getCount() + 1);
         } else {
-            $request->getSession()->set("flag",1);
+            $request->getSession()->set("flag", 1);
             $product = $em->getRepository(Product::class)->findOneBy(['id' => $id]);
 
             $cart = new Cart();

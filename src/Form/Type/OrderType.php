@@ -17,21 +17,17 @@ class OrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class,[
-
-                'attr' => ['style' => 'width: 600px','height: 50px']
-
+            ->add('name', TextType::class, [
+                'attr' => ['style' => 'width: 600px', 'height: 50px']
             ])
             ->add('email', EmailType::class, [
                 'help' => 'Введите email адрес',
-                'attr' => ['style' => 'width: 600px','height: 50px']
+                'attr' => ['style' => 'width: 600px', 'height: 50px']
             ])
-            ->add('numberPhone', TextType::class,[
-            'attr' => ['style' => 'width: 600px','height: 50px']
-        ])
+            ->add('numberPhone', TextType::class, [
+                'attr' => ['style' => 'width: 600px', 'height: 50px']
+            ])
             ->add('sent', SubmitType::class);
-
-
     }
 
     public function configureOptions(OptionsResolver $resolver): void
@@ -39,7 +35,5 @@ class OrderType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Order::class,
         ]);
-
     }
-
 }

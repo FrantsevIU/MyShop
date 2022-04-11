@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Repository\CategoryIdRepository;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Mixed_;
 
 /**
- * @ORM\Entity(repositoryClass=CategoryIdRepository::class)
- * @ORM\Table (name="categories")
+ * @ORM\Entity
+ * @ORM\Table(name="categories")
  */
 class Category
 {
@@ -33,7 +32,7 @@ class Category
 
     private int $parrentId;
 
-      public function getId(): int
+    public function getId(): int
     {
         return $this->id;
     }

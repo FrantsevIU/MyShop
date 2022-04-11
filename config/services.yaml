@@ -21,5 +21,23 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
+    App\EventListener\IpLoginEventListener:
+        tags:
+            - { name: kernel.event_listener, event: security.authentication.success }
+
+    App\EventListener\IpControlEventListener:
+        tags:
+            - { name: kernel.event_listener, event: security.authentication.success }
+
+    App\Service\CartActionService:
+        arguments:
+            $scoringFactors:
+                - '@App\Service\Cart\CartAddProductService'
+                - '@App\Service\Cart\CartChangeProductService'
+                - '@App\Service\Cart\CartClearProductService'
+                - '@App\Service\Cart\CartDellProductService'
+
+
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

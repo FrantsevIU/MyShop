@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,7 +13,7 @@ use App\Entity\Product;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/shop/list", name="shopList")
+     * @Route("/", name="shopList")
      */
     public function allProduct(EntityManagerInterface $em): Response
     {

@@ -41,9 +41,10 @@ class Cart
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
     public function getProduct(): Product
@@ -51,9 +52,10 @@ class Cart
         return $this->product;
     }
 
-    public function setProduct(Product $product): void
+    public function setProduct(Product $product): self
     {
         $this->product = $product;
+        return $this;
     }
 
     public function getSessionId(): ?string
@@ -61,9 +63,10 @@ class Cart
         return $this->sessionId;
     }
 
-    public function setSessionId(?string $sessionId): void
+    public function setSessionId(?string $sessionId): self
     {
         $this->sessionId = $sessionId;
+        return $this;
     }
 
     public function getCount(): int
@@ -71,9 +74,10 @@ class Cart
         return $this->count;
     }
 
-    public function setCount(int $count): void
+    public function setCount(int $count): self
     {
         $this->count = $count;
+        return $this;
     }
 
 

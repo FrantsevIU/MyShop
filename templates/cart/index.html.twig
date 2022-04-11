@@ -29,7 +29,7 @@
                                     </div>
 {#                                    {{ dump(cartItem)}}#}
                                     {% for items in cartItem %}
-                                        {{ dump(items) }}
+{#                                        {{ dump(items) }}#}
                                         <div class="card mb-3">
                                         <div class="card-body">
                                             <div class="d-flex justify-content-between">
@@ -43,11 +43,15 @@
                                                         <h5>Iphone 11 pro</h5>
                                                         <p class="small mb-0">256GB, Navy Blue</p>
                                                     </div>
+
                                                 </div>
                                                 <div class="d-flex flex-row align-items-center">
+                                                    <div class="ms-3"> <a href="{{ path('changeCount',{'id':items.Id,'changeCount':"plus"}) }}" >+ </div>
+                                                    <div class="ms-3"> <a href="{{ path('changeCount',{'id':items.Id,'changeCount':"minus"}) }}" style="color: #cecece;">- </div>
                                                     <div style="width: 50px;">
                                                         <h5 class="fw-normal mb-0">{{ items.count |trans|nl2br }}</h5>
                                                     </div>
+
                                                     <div style="width: 80px;">
                                                         <h5 class="mb-0">${{ items.product.price*items.count |trans|nl2br }}</h5>
                                                     </div>
@@ -88,7 +92,7 @@
 {#    <p>{{ items.itemId.discription |trans|nl2br }}</p>#}
 {#    <p>Price:{{ items.itemId.price*items.count |trans|nl2br }}</p>#}
 {#    <p><a>Count: <a href="{{ path('dellUpdateCart',{'id':items.Id}) }}">-</a>{{ items.count |trans|nl2br }}</a><a#}
-{#                href="{{ path('addUpdateCart',{'id':items.Id}) }}">+</a></p>#}
+{#                href="{{ path('addUpdateCart',{'id':items.Id,'changeCOunt':'plus'}) }}">+</a></p>#}
 {#    {% set cent = cent+items.itemId.price*items.count %}#}
 {#    {% set item = item+items.count %}#}
 {#    <p><a href="{{ path('dellItem',{'id':items.Id}) }}">dell Item</a></p>#}

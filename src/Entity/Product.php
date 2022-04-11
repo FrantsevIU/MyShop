@@ -29,7 +29,7 @@ class Product
     /**
      * @ORM\Column(name="price", type="integer", nullable=true)
      */
-    private ?string $price;
+    private ?int $price;
 
     /**
      * @ORM\Column(name="discription", type="string", length=250, nullable=true)

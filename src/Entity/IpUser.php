@@ -8,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\Date;
 
 /**
- * @ORM\Table (name="IpUser")
+ * @ORM\Entity
+ * @ORM\Table(name="IpUser")
  */
 class IpUser
 {
@@ -20,7 +21,7 @@ class IpUser
     private int $id;
 
     /**
-     * @ORD\ManyToOne(targetEntity="APP/Entity/User")
+     * @ORM\ManyToOne(targetEntity="App/Entity/User")
      * @ORM\JoinColumn(name="user_id",referencedColumnName="id")
      */
     private User $user;

@@ -13,8 +13,8 @@
                             <div class="row">
 
                                 <div class="col-lg-7">
-                                    <h5 class="mb-3"><a href="{{path('shopList')}}" class="text-body"><i
-                                                    class="fas fa-long-arrow-alt-left me-2"></i>  Continue shopping</a></h5>
+                                    <h5 class="mb-3"><a style="text-decoration: none; color: #009900;" href="{{ path('shopList') }}"> Continue shopping➔</a>
+                                    </h5>
                                     <hr>
 
                                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -22,56 +22,75 @@
                                             <p class="mb-1">Shopping cart</p>
 
                                         </div>
-                                        <div>
-                                            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
-                                                                                                        class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
-                                        </div>
+{#                                        <div>#}
+{#                                            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"#}
+{#                                                                                                        class="text-body">price#}
+{#                                                    <i class="fas fa-angle-down mt-1"></i></a></p>#}
+{#                                        </div>#}
                                     </div>
-{#                                    {{ dump(cartItem)}}#}
                                     {% for items in cartItem %}
-{#                                        {{ dump(items) }}#}
                                         <div class="card mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex flex-row align-items-center">
-                                                    <div>
-                                                        <img
-                                                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                                                                class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
-                                                    </div>
-                                                    <div class="ms-3">
-                                                        <h5>Iphone 11 pro</h5>
-                                                        <p class="small mb-0">256GB, Navy Blue</p>
-                                                    </div>
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div>
+                                                            <img
+                                                                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                                                                    class="img-fluid rounded-3" alt="Shopping item"
+                                                                    style="width: 65px;">
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h5>Iphone 11 pro</h5>
+                                                            <p class="small mb-0">256GB, Navy Blue</p>
+                                                        </div>
 
-                                                </div>
-                                                <div class="d-flex flex-row align-items-center">
-                                                    <div class="ms-3"> <a href="{{ path('changeCount',{'id':items.Id,'changeCount':"plus"}) }}" >+ </div>
-                                                    <div class="ms-3"> <a href="{{ path('changeCount',{'id':items.Id,'changeCount':"minus"}) }}" style="color: #cecece;">- </div>
-                                                    <div style="width: 50px;">
-                                                        <h5 class="fw-normal mb-0">{{ items.count |trans|nl2br }}</h5>
                                                     </div>
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div class="ms-3"><a
+                                                                    style="font-size: 35px; text-decoration: none; color: red;"
+                                                                    href="{{ path('cartAction',{'nameAction':'changeProduct','id':items.Id,'changeCount':"plus"}) }}">+</a>
+                                                        </div>
+                                                        <div style="width: 15px;"></div>
+                                                        <div style="width: 15px;">
+                                                            <h5 style="text-align:center;border: 2px solid blue; padding: 5px 10px ; border-radius: 5px; "
+                                                                class="fw-normal mb-0">{{ items.count |trans|nl2br }}</h5>
+                                                        </div>
+                                                        <div class="ms-3"><a
+                                                                    style="font-size: 40px; text-decoration: none; color: red;"
+                                                                    href="{{ path('cartAction',{'nameAction':'changeProduct','id':items.Id,'changeCount':"minus"}) }}">-</a>
+                                                        </div>
+                                                        <div style="width: 20px;"></div>
 
-                                                    <div style="width: 80px;">
-                                                        <h5 class="mb-0">${{ items.product.price*items.count |trans|nl2br }}</h5>
+                                                        <div style="width: 80px;">
+                                                            <h5 class="mb-0">
+                                                                ${{ items.product.price*items.count |trans|nl2br }}</h5>
+                                                        </div>
+                                                        <div>
+                                                            <h5>
+                                                                <a style="text-decoration: none; color: #0dcaf0;" href="{{ path('cartAction',{'nameAction':'dellProduct','id':items.Id}) }}">dell</a>
+                                                            </h5>
+                                                        </div>
                                                     </div>
-                                                    <a href="{{ path('dellItem',{'id':items.Id}) }}" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                         {% set cent = cent+items.product.price*items.count %}
-                                           {% set item = item+items.count %}
+                                        {% set item = item+items.count %}
                                     {% endfor %}
                                     <hr>
                                     <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <p class="mb-0">You have <b>{{ item }}</b> items in your cart</p>
-                                        <p class="mb-0">Total price: <b>${{ cent }}</b> </p>
-                                    <div class="col-lg-7">
-                                        <h5 class="mb-4"><a href="{{ path('clear') }}" class="text- body">Clear cart</a></h5>
+                                        <p class="mb-0">You have <b>{{ item }}</b> items in your cart</p>
+                                        <div style="width: 30px;"></div>
+                                        <p class="mb-0">Total price: <b>${{ cent }}</b></p>
+                                        <div style="width: 30px;"></div>
+                                        <div class="col-lg-7">
+                                            <h5 class="mb-4"><a
+                                                        href="{{ path('cartAction',{'nameAction':'clearProduct','id':'1'}) }}"
+                                                        class="text- body" style="color: #D64292;text-decoration: none;">Clear cart</a></h5>
 
-                                    </div>
-                                        <h5 class="mb-4"><a href="{{ path('orderCart') }}" class="text- body">Order</a></h5>
+                                        </div>
+                                        <h5 class="mb-4"><a style="text-decoration: none;color: #B0413E"href="{{ path('orderCart') }}" class="text- body">Order</a>
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
@@ -85,29 +104,29 @@
 
 {% endblock %}
 
-{#{% for items in cartItem %}#}
+{# {% for items in cartItem %} #}
 
 
-{#    <p>{{ items.itemId |trans|nl2br }}</p>#}
-{#    <p>{{ items.itemId.discription |trans|nl2br }}</p>#}
-{#    <p>Price:{{ items.itemId.price*items.count |trans|nl2br }}</p>#}
-{#    <p><a>Count: <a href="{{ path('dellUpdateCart',{'id':items.Id}) }}">-</a>{{ items.count |trans|nl2br }}</a><a#}
-{#                href="{{ path('addUpdateCart',{'id':items.Id,'changeCOunt':'plus'}) }}">+</a></p>#}
-{#    {% set cent = cent+items.itemId.price*items.count %}#}
-{#    {% set item = item+items.count %}#}
-{#    <p><a href="{{ path('dellItem',{'id':items.Id}) }}">dell Item</a></p>#}
+{#    <p>{{ items.itemId |trans|nl2br }}</p> #}
+{#    <p>{{ items.itemId.discription |trans|nl2br }}</p> #}
+{#    <p>Price:{{ items.itemId.price*items.count |trans|nl2br }}</p> #}
+{#    <p><a>Count: <a href="{{ path('dellUpdateCart',{'id':items.Id}) }}">-</a>{{ items.count |trans|nl2br }}</a><a #}
+{#                href="{{ path('addUpdateCart',{'id':items.Id,'changeCOunt':'plus'}) }}">+</a></p> #}
+{#    {% set cent = cent+items.itemId.price*items.count %} #}
+{#    {% set item = item+items.count %} #}
+{#    <p><a href="{{ path('dellItem',{'id':items.Id}) }}">dell Item</a></p> #}
 
 
-{#{% endfor %}#}
+{# {% endfor %} #}
 
-{#TotalPrice: {{ cent }}#}
-{#TotalItem:{{ item }}#}
-{#{% if cent >=2000 %}#}
-{#    <p> Выберете подарок</p><p>{{ presenet }}</p> <a href="{{ path('itemAddCart',{'id':presenet.id}) }}">Выбрать подарок</a></p>#}
+{# TotalPrice: {{ cent }} #}
+{# TotalItem:{{ item }} #}
+{# {% if cent >=2000 %} #}
+{#    <p> Выберете подарок</p><p>{{ presenet }}</p> <a href="{{ path('itemAddCart',{'id':presenet.id}) }}">Выбрать подарок</a></p> #}
 
-{#{% else %}#}
-{#{% endif %}#}
-{#    {{ cent+items.itemId.price*items.count  }}#}
-{#<p><a href="{{ path('clear') }}">Clear</a></p>#}
+{# {% else %} #}
+{# {% endif %} #}
+{#    {{ cent+items.itemId.price*items.count  }} #}
+{# <p><a href="{{ path('clear') }}">Clear</a></p> #}
 
-{#{% endblock %}#}
+{# {% endblock %} #}

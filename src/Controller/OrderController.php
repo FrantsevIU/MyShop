@@ -27,13 +27,16 @@ class OrderController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+
             $em->persist($orderTask);
             $em->flush();
 
-            return $this->redirectToRoute('shopList');
+            return $this->redirectToRoute('homePage');
         }
-        return $this->renderForm('order/index.html.twig', [
-            'form' => $form,
+
+        return $this->render('order/index.html.twig',[
+        'form' => $form->createView()
         ]);
     }
 }
+

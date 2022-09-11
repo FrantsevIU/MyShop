@@ -4,106 +4,107 @@
 
 {% block body %}
     <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
-                                    </div>
-                                    <div class="col-lg-5">
+    </div>
+    <div class="col-lg-5">
 
-                                        <div class="card bg-primary text-white rounded-3">
-                                            <div class="card-body">
-                                                <div class="d-flex justify-content-between align-items-center mb-4">
-                                                    <h5 class="mb-0">Card details</h5>
-                                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
-                                                         class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
-                                                </div>
+        <div class="card bg-primary text-white rounded-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="mb-0">Card details</h5>
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+                         class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+                </div>
 
-                                                <p class="small mb-2">Card type</p>
-                                                <a href="#!" type="submit" class="text-white"><i
-                                                            class="fab fa-cc-mastercard fa-2x me-2"></i></a>
-                                                <a href="#!" type="submit" class="text-white"><i
-                                                            class="fab fa-cc-visa fa-2x me-2"></i></a>
-                                                <a href="#!" type="submit" class="text-white"><i
-                                                            class="fab fa-cc-amex fa-2x me-2"></i></a>
-                                                <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
-                                                {{ form_start(form) }}
-                                                <div class="mt-4">
+                <p class="small mb-2">Card type</p>
+                <a href="#!" type="submit" class="text-white"><i
+                            class="fab fa-cc-mastercard fa-2x me-2"></i></a>
+                <a href="#!" type="submit" class="text-white"><i
+                            class="fab fa-cc-visa fa-2x me-2"></i></a>
+                <a href="#!" type="submit" class="text-white"><i
+                            class="fab fa-cc-amex fa-2x me-2"></i></a>
+                <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
+                {{ form_start(form) }}
+                <div class="mt-4">
 
-                                                    <div class="form-outline form-white mb-4">
-                                                        <div  >{{ form_row(form.name)}}</div>
-                                                        <label class="form-label" for="typeText" >Name </label>
-
-
-                                                </div>
+                    <div class="form-outline form-white mb-4">
+                        <div>{{ form_row(form.name) }}</div>
+                        <label class="form-label" for="typeText">Name </label>
 
 
-
-                                                    <div class="form-outline form-white mb-4">
-                                                        <div {{ form_row(form.email)}}</div>
-                                                        <label class="form-label" for="typeText">Email adress</label>
-
-                                                    </div>
+                    </div>
 
 
+                    <div class="form-outline form-white mb-4">
+                        <div {{ form_row(form.email) }}</div>
+                    <label class="form-label" for="typeText">Email adress</label>
+
+                </div>
 
 
-                                                        <div class="form-outline form-white mb-4">
-                                                            <div  {{ form_row(form.numberPhone)}}</div>
-                                                                <label class="form-label" for="typeText">Number phone</label>
+                <div class="form-outline form-white mb-4">
+                    <div {{ form_row(form.numberPhone) }}</div>
+                <label class="form-label" for="typeText">Number phone</label>
 
-                                                        </div>
+            </div>
 
-{#                                                    <div class="row mb-4">#}
-{#                                                        <div class="col-md-6">#}
-{#                                                            <div class="form-outline form-white">#}
-{#                                                                <input type="{{ form(form.numberPhone)}}" id="typeExp" class="form-control form-control-lg"#}
-{#                                                                       placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" />#}
-{#                                                                <label class="form-label" for="typeExp">Expiration</label>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="col-md-6">#}
-{#                                                            <div class="form-outline form-white">#}
-{#                                                                <input type="password" id="typeText" class="form-control form-control-lg"#}
-{#                                                                       placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />#}
-{#                                                                <label class="form-label" for="typeText">Cvv</label>#}
+            <div class="form-outline form-white mb-4">
+                <div {{ form_row(form.address) }}</div>
+            <label class="form-label" for="typeText">address</label>
+
+        </div>
+
+        {#                                                    <div class="row mb-4"> #}
+        {#                                                        <div class="col-md-6"> #}
+        {#                                                            <div class="form-outline form-white"> #}
+        {#                                                                <input type="{{ form(form.numberPhone)}}" id="typeExp" class="form-control form-control-lg" #}
+        {#                                                                       placeholder="MM/YYYY" size="7" id="exp" minlength="7" maxlength="7" /> #}
+        {#                                                                <label class="form-label" for="typeExp">Expiration</label> #}
+        {#                                                            </div> #}
+        {#                                                        </div> #}
+        {#                                                        <div class="col-md-6"> #}
+        {#                                                            <div class="form-outline form-white"> #}
+        {#                                                                <input type="password" id="typeText" class="form-control form-control-lg" #}
+        {#                                                                       placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" /> #}
+        {#                                                                <label class="form-label" for="typeText">Cvv</label> #}
 
 
+        <hr class="my-4">
 
+        <div class="d-flex justify-content-between">
+            <p class="mb-2">Subtotal</p>
+            <p class="mb-2">$4798.00</p>
+        </div>
 
-                                                <hr class="my-4">
+        <div class="d-flex justify-content-between">
+            <p class="mb-2">Shipping</p>
+            <p class="mb-2">$20.00</p>
+        </div>
 
-                                                <div class="d-flex justify-content-between">
-                                                    <p class="mb-2">Subtotal</p>
-                                                    <p class="mb-2">$4798.00</p>
-                                                </div>
+        <div class="d-flex justify-content-between mb-4">
+            <p class="mb-2">Total(Incl. taxes)</p>
+            <p class="mb-2">$</p>
+        </div>
 
-                                                <div class="d-flex justify-content-between">
-                                                    <p class="mb-2">Shipping</p>
-                                                    <p class="mb-2">$20.00</p>
-                                                </div>
+        {#                                                <button type="button" class="btn btn-info btn-block btn-lg"> #}
+        <div class="d-flex justify-content-between">
+            <div class="btn btn-info btn-block btn-lg">{{ form_row(form.CreateOrder) }}
 
-                                                <div class="d-flex justify-content-between mb-4">
-                                                    <p class="mb-2">Total(Incl. taxes)</p>
-                                                    <p class="mb-2">$</p>
-                                                </div>
+                {#                                                        <span>$4818.00</span> #}
+                <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+            </div>
+        </div>
+        {{ form_end(form) }}
 
-{#                                                <button type="button" class="btn btn-info btn-block btn-lg">#}
-                                            <div class="d-flex justify-content-between">
-                                                    <div class="btn btn-info btn-block btn-lg">{{ form_row(form.sent) }}
-
-{#                                                        <span>$4818.00</span>#}
-                                                        <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                                                    </div>
-                                        </div>
-                                                        {{ form_end(form) }}
-
-                                        </div>
-{#                                                </button>#}
-                                            </div>
-                                        </div>
-{#    {{ form_end(form) }}#}
-{#    {{ form(form)}}#}
+    </div>
+    {#                                                </button> #}
+    </div>
+    </div>
+    {#    {{ form_end(form) }} #}
+    {#    {{ form(form)}} #}
 
 {% endblock %}

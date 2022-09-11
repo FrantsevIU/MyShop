@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+            {% for item in item %}
+
+
+                            <a href="{{ path( 'updateProductId',{'id':item.id}) }}">{{ item.name |trans|nl2br }}</a>
+
+                                <li>{{ item.category.name|trans|nl2br }}</li>
+
+
+
+
+
+
+            {% endfor %}
+
+    {% endblock %}
+
+
+
+

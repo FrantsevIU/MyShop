@@ -5,15 +5,17 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Product
  * @ORM\Table(name="products")
  * @ORM\Entity
  */
-
 class Product
 {
+
     /**
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -43,18 +45,37 @@ class Product
     private Category $category;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="integer")
      */
-    private string $numberOfProduct;
+    private int $numberOfProduct;
+
+    /**
+     * @ORM\Column (type="string")
+     */
+    private ?string $imgProduct;
+
+    /**
+     * @ORM\Column (type="array", nullable=true)
+     */
+    protected ?Collection $tags;
+
+
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
+
 
     public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(int $id): void
+    public function setId(int $id): self
     {
         $this->id = $id;
+        return $this;
+
     }
 
     public function getName(): ?string
@@ -62,9 +83,10 @@ class Product
         return $this->name;
     }
 
-    public function setName(?string $name): void
+    public function setName(?string $name): self
     {
         $this->name = $name;
+        return $this;
     }
 
     public function getPrice(): ?int
@@ -72,9 +94,10 @@ class Product
         return $this->price;
     }
 
-    public function setPrice(?int $price): void
+    public function setPrice(?int $price): self
     {
         $this->price = $price;
+        return $this;
     }
 
     public function getDiscription(): ?string
@@ -82,9 +105,10 @@ class Product
         return $this->discription;
     }
 
-    public function setDiscription(?string $discription): void
+    public function setDiscription(?string $discription): self
     {
         $this->discription = $discription;
+        return $this;
     }
 
     public function getCategory(): Category
@@ -92,21 +116,50 @@ class Product
         return $this->category;
     }
 
-    public function setCategory(Category $category): void
+    public function setCategory(Category $category): self
     {
         $this->category = $category;
+        return $this;
     }
 
-    public function getNumberOfProduct(): string
+    public function getNumberOfProduct(): int
     {
         return $this->numberOfProduct;
     }
 
-    public function setNumberOfProduct($numberOfProduct): void
+    public function setNumberOfProduct(int $numberOfProduct): self
     {
         $this->numberOfProduct = $numberOfProduct;
+        return $this;
     }
 
 
+    public function getImgProduct(): ?string
+    {
+        return $this->imgProduct;
+    }
+
+
+    public function setImgProduct(?string $imgProduct): self
+    {
+        $this->imgProduct = $imgProduct;
+        return $this;
+    }
+
+
+    public function getTags(): ?Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(PropertiesProducts $tag): void
+    {
+        $this->tags->add($tag);
+    }
+
+    public function removeTag(PropertiesProducts $tag): void
+    {
+        $this->tags->removeElement($tag);
+    }
 
 }

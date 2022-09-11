@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {% for properties in properties %}
+    {{ properties.name }}
+    {% endfor %}
+
+    {{ form_start(propertiesForm) }}
+    {{ form_widget(propertiesForm) }}
+
+    <input type="submit" value="Добавить"
+           class="btn btn-default pull-right"/>
+
+    <br></br>
+    {{ form_end(propertiesForm) }}
+
+
+{% endblock %}

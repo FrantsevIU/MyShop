@@ -19,7 +19,7 @@ class CartDellProductService implements CartServiceInterface
 
     public function isAction(string $nameAction): bool
     {
-        return $nameAction == "DellProduct";
+        return $nameAction == "dellProduct";
     }
 
     public function execute(int $id, ?string $changeCount = null): void

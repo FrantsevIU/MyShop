@@ -9,6 +9,6 @@ interface CartServiceInterface
 
     public function isAction(string $nameAction): bool;
 
-    public function execute(int $id,?string $changeCount = null);
+    public function execute(int $id, ?string $changeCount = null);
 
 }

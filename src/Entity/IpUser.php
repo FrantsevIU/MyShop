@@ -21,7 +21,7 @@ class IpUser
     private int $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App/Entity/User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(name="user_id",referencedColumnName="id")
      */
     private User $user;

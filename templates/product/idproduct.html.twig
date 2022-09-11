@@ -7,7 +7,7 @@
 {% block body %}
 
         <p>{{product.discription}}</p>
-    <p> <a href="{{ path('itemAddCart',{'id':product.id}) }}">add cart</a></p>
+    <p> <a href="{{ path('itemShow',{'id':product.id}) }}">add cart</a></p>
     <div class="card-body">
         <h1 class="h2">{{product.name}}</h1>
         <p class="h3 py-2">${{product.price}}</p>
@@ -81,7 +81,7 @@
                     <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
                 </div>
                 <div class="col d-grid">
-                    <a type="submit" href="{{ path('itemAddCart',{'id':product.id}) }}" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</a>
+                    <a type="submit" href="{{ path('itemShow',{'id':product.id}) }}" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</a>
                 </div>
             </div>
         </form>

@@ -19,7 +19,7 @@ class CartChangeProductService implements CartServiceInterface
 
     public function isAction(string $nameAction): bool
     {
-        return $nameAction == "ChangeProduct";
+        return $nameAction == "changeProduct";
     }
 
     public function execute(int $id, ?string $changeCount = null): void

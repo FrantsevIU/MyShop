@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Repository\CartRepository;
-use App\Service\Cart\CartAddProductService;
-use App\Service\Cart\CartChangeProductService;
-use App\Service\Cart\CartClearProductService;
-use App\Service\Cart\CartDellProductService;
 use App\Service\CartActionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,9 +39,10 @@ class CartController extends AbstractController
     /**
      * @Route("shop/cart/{nameAction}/{id}", name="cartAction")
      */
-    public function dellProduct(string $nameAction, int $id, CartActionService $actionService): Response
+    public function getNameAction(Request $request, string $nameAction, int $id, CartActionService $actionService): Response
     {
-        $actionService->action($id,$nameAction, $changeCount);
+
+        $actionService->action($id, $nameAction, $request->query->get('changeCount'));
 
         return $this->redirectToRoute('cart');
     }

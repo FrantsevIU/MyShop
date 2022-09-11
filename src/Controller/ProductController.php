@@ -13,7 +13,7 @@ use App\Entity\Product;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/", name="shopList")
+     * @Route("/product", name="shopList")
      */
     public function allProduct(EntityManagerInterface $em): Response
     {

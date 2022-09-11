@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <br></br>
+
+    {% for catall in catall %}
+<h5 class="mb-3"><a style="text-decoration: none; color: #009900;" href="{{ path('updateCategoryAdmin',{'id':catall.id}) }}"> <Update></Update>update</a>
+    {{ catall.name }}
+    {% endfor %}
+{#<h5 class="mb-3"><a style="text-decoration: none; color: #009900;" href="{{ path('updateCategoryAdmin',{'id':1}) }}"> <Update></Update>update</a>#}
+
+    <br></br>c
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <input type="submit" value="Добавить"
+           class="btn btn-default pull-right"/>
+
+    <br></br>
+    {{ form_end(form) }}
+
+
+
+
+{% endblock %}

@@ -22,7 +22,7 @@ class CartClearProductService implements CartServiceInterface
 
     public function isAction(string $nameAction): bool
     {
-        return $nameAction == "ClearProduct";
+        return $nameAction == "clearProduct";
     }
 
     public function execute(int $id, ?string $changeCount = null): void

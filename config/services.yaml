@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
 
+ imgProduct_directory: '%kernel.project_dir%/public/uploads/imgProduct'
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -21,13 +23,14 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
+
     App\EventListener\IpLoginEventListener:
         tags:
             - { name: kernel.event_listener, event: security.authentication.success }
 
-    App\EventListener\IpControlEventListener:
-        tags:
-            - { name: kernel.event_listener, event: security.authentication.success }
+#    App\EventListener\IpControlEventListener:
+#        tags:
+#            - { name: kernel.event_listener, event: security.authentication.success }
 
     App\Service\CartActionService:
         arguments:
@@ -36,7 +39,11 @@ services:
                 - '@App\Service\Cart\CartChangeProductService'
                 - '@App\Service\Cart\CartClearProductService'
                 - '@App\Service\Cart\CartDellProductService'
+                -
 
+    App\Service\File\FileUploader:
+        arguments:
+            $targetDirectory: '%imgProduct_directory%'
 
 
     # add more service definitions when explicit configuration is needed

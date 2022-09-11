@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    hellow world
+
+    {{ form_start(form)}}
+    {{ form_row(form.name) }}
+    {{ form_row(form.price) }}
+    {{ form_row(form.discription) }}
+    {{ form_row(form.numberOfProduct) }}
+    {{ form_row(form.category) }}
+    {{ form_row(form.imgProduct) }}
+
+    {#        {% for tag in form.tags %}#}
+    {{ form_row(form.tags) }}
+    {#        {% endfor %}#}
+    <input type="submit" value="Добавить"
+           class="btn btn-default pull-right"/>
+    </ul>
+    {{ form_end(form) }}
+    <input type="submit" value="add Product"
+           class="btn btn-default pull-right"/>
+
+    <div class="ms-3"><a
+                style="font-size: 40px; text-decoration: none; color: red;"
+                href="{{ path('dellProductId',{'id':item.Id}) }}">Delite</a>
+    </div>
+
+
+{#    {{ form_end(form) }}#}
+
+    {{ form_start(discForm) }}
+    {{ form_widget(discForm) }}
+    <input type="submit" value="add Product"
+           class="btn btn-default pull-right"/>
+    {{ form_end(discForm) }}
+
+    {{ form_start(propertyValueForm) }}
+    {{ form_widget(propertyValueForm) }}
+    <input type="submit" value="add property"
+           class="btn btn-default pull-right"/>
+    {{ form_end(propertyValueForm) }}
+
+    {% for p in p %}
+        {{ p.propertyid.name }}  {{ p.value }}
+    {% endfor %}
+
+
+{% endblock %}
+{% block javascript %}
+
+{% endblock %}
+
+
+
+

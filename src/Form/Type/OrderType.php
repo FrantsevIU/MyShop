@@ -27,7 +27,10 @@ class OrderType extends AbstractType
             ->add('numberPhone', TextType::class, [
                 'attr' => ['style' => 'width: 600px', 'height: 50px']
             ])
-            ->add('sent', SubmitType::class);
+            ->add('address', TextType::class, [
+                'attr' => ['style' => 'width: 600px', 'height: 50px']
+            ])
+            ->add('CreateOrder', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

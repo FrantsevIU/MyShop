@@ -6,6 +6,7 @@
     "require": {
         "php": ">=7.4",
         "ext-ctype": "*",
+        "ext-http": "*",
         "ext-iconv": "*",
         "api-platform/core": "^2.6",
         "doctrine/annotations": "^1.0",

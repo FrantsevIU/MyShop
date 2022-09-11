@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.price) }}
+    {{ form_row(form.discription) }}
+    {{ form_row(form.numberOfProduct) }}
+    {{ form_row(form.category) }}
+    {{ form_row(form.imgProduct) }}
+
+
+
+    <ul class="tags"
+        {% foreach  %}
+    data-index="{{ form.tags|length > 0 ? form.tags|last.vars.name + 1 : 0 }}"
+    data-prototype="{{ form_widget(form.tags.vars.prototype)|e('html_attr') }}"
+            {% foreach  %}
+    ></ul>
+
+
+    <button type="button" class="add_item_link" data-collection-holder-class="tags">Add a tag</button>
+    <input type="submit" value="Добавить"
+           class="btn btn-default pull-right"/>
+
+    {{ form_end(form) }}
+
+    {#    <button type="button" class="add_item_link" data-collection-holder-class="tags">Dell a tag</button> #}
+
+{% endblock %}
+
+    {% block javascript %}
+    <script type="application/javascript">
+        const addFormToCollection = (e) => {
+        const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+        const item = document.createElement('li');
+
+        item.innerHTML = collectionHolder
+        .dataset
+        .prototype
+        .replace(
+        /__name__/g,
+        collectionHolder.dataset.index
+        );
+        collectionHolder.appendChild(item);
+        collectionHolder.dataset.index++;
+    };
+        document
+        .querySelectorAll('.add_item_link')
+        .forEach(btn => {
+        btn.addEventListener("click", addFormToCollection)
+    });
+
+        const addTagFormDeleteLink = (item) => {
+        const removeFormButton = document.createElement('button');
+
+        removeFormButton.innerText = 'Delete';
+        item.append(removeFormButton);
+        removeFormButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        // remove the li for the tag form
+        item.remove();
+    });
+    }
+
+        document
+        .querySelectorAll('ul.tags')
+        .forEach((tag) => {addTagFormDeleteLink(tag)});
+
+    </script>
+    {% endblock %}
